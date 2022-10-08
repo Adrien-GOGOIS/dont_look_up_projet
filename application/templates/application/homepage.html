@@ -1,16 +1,13 @@
 {% extends 'application/base.html' %}
 
-{% block title %}
-    {{ block.super }} - Homepage
-{% endblock %}
+    {% block title %}
+        {{ block.super }} - Homepage
+    {% endblock %}
 
-{% block content %}
-    <div>
-        <label for="start_date">Enter a start date</label>
-        <input type="date" id="start_date" name="start_date">
-    </div>
-    <div>
-        <label for="end_date">Enter an end date</label>
-        <input type="date" id="end_date" name="end_date">
-    </div>
-{% endblock %}
+    {% block content %}
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Recherche">
+        </form>
+    {% endblock %}

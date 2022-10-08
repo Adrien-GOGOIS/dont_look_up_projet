@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from application.form import DateForm
 
-# Create your views here.
+
 def homepage(request):
+    form = DateForm()
+
     context = {
+        'form': form
     }
 
     return render(request, 'application/homepage.html', context)
