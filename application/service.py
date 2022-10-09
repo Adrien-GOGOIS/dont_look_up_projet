@@ -3,12 +3,6 @@ from datetime import date
 
 
 class Asteroid():
-    asteroid_id = 0
-    name = ''
-    diameter = 0
-    close_approach_date = ''
-    miss_distance = ''
-    latest_approach = {}
 
     def __init__(self, asteroid_id, name, diameter, close_approach_date, miss_distance, latest_approach):
         self.asteroid_id = asteroid_id
@@ -33,9 +27,9 @@ def get_asteroids(start_date, end_date):
     for date, asteroid in asteroids['near_earth_objects'].items():
         asteroid_id = asteroid[0]['id']
         name = asteroid[0]['name']
-        diameter = asteroid[0]['estimated_diameter']['meters']['estimated_diameter_max']
+        diameter = round(asteroid[0]['estimated_diameter']['meters']['estimated_diameter_max'])
         close_approach_date = asteroid[0]['close_approach_data'][0]['close_approach_date']
-        miss_distance = asteroid[0]['close_approach_data'][0]['miss_distance']['kilometers']
+        miss_distance = round(float(asteroid[0]['close_approach_data'][0]['miss_distance']['kilometers']))
         latest_approach = {}
 
         asteroid = Asteroid(asteroid_id, name, diameter, close_approach_date, miss_distance, latest_approach)
@@ -57,7 +51,11 @@ def get_asteroid_by_id(asteroid_id):
 
     for approach in reversed(asteroid_approach):
         if approach['close_approach_date'] < str(date.today()):
-            asteroid_latest_approach.update({approach['close_approach_date']: approach['miss_distance']['kilometers']})
+            asteroid_latest_approach.update({
+                approach['close_approach_date']
+                :
+                round(float(approach['miss_distance']['kilometers']))
+            })
         if len(asteroid_latest_approach) == 5:
             break
 
