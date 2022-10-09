@@ -5,26 +5,38 @@
     {% endblock %}
 
     {% block content %}
-        <form method="post" action="">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Recherche" class="btn btn-success">
-        </form>
-        <div>
-            {% if asteroids %}
-                {% for asteroid in asteroids %}
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title">Son nom : {{ asteroid.name }}</h5>
-                        <p class="card-text">Son diamètre : {{ asteroid.diameter }} km</p>
-                        <p class="card-text">Distance avec votre tête : {{ asteroid.miss_distance }} km</p>
-                        <p class="card-text">Date : {{ asteroid.close_approach_date }}</p>
-                        <a href="{% url 'asteroid-details' asteroid.asteroid_id %}" class="btn btn-warning">En savoir plus...vraiment?</a>
-                      </div>
+        <div class="container">
+            <div class="row">
+                <form method="post" class="center-block text-center">
+                    {% csrf_token %}
+                    <div class="">
+                        {{ form.as_p }}
                     </div>
-                {% endfor %}
-            {% else %}
-                <p>Request...</p>
-            {% endif %}
+                    <input type="submit" value="Recherche" class="btn btn-success">
+                </form>
+            </div>
         </div>
+            {% if asteroids %}
+                <div class="container mt-5">
+                   <div class="row text-center">
+                       {% for asteroid in asteroids %}
+                       <div class="col-md-4">
+                           <div class="card my-2">
+                              <div class="card-body">
+                                <h5 class="card-title">Nom : {{ asteroid.name }}</h5>
+                                <p class="card-text">Diamètre : {{ asteroid.diameter }} km</p>
+                                <p class="card-text">Distance avec votre tête : {{ asteroid.miss_distance }} km</p>
+                                <p class="card-text">Date : {{ asteroid.close_approach_date }}</p>
+                                <a href="{% url 'asteroid-details' asteroid.asteroid_id %}" class="btn btn-warning">En savoir plus...vraiment?</a>
+                              </div>
+                           </div>
+                       </div>
+                       {% endfor %}
+                   </div>
+                </div>
+            {% else %}
+                <div class="d-flex justify-content-center mt-5">
+                    <p>En attente ...</p>
+                </div>
+            {% endif %}
     {% endblock %}

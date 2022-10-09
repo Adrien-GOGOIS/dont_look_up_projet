@@ -6,9 +6,20 @@
 
 {% block content %}
     {% if asteroid %}
-        <p>Asteroid : {{ asteroid.name }}</p>
-            {% for date, distance in asteroid.latest_approach.items %}
-                <p>Passage le : {{ date }} à {{ distance }} km de votre tête</p>
-            {% endfor %}
+        <div class="d-flex justify-content-center">
+            <div class="card" style="width: 50vw;">
+              <div class="card-header">
+                {{ asteroid.name }} - Derniers passages
+              </div>
+              <ul class="list-group list-group-flush">
+                  {% for date, distance in asteroid.latest_approach.items %}
+                  <li class="list-group-item">
+                      Le <span>{{ date }}</span> à <span>{{ distance }}</span> km de votre tête
+                  </li>
+                  {% endfor %}
+              </ul>
+            </div>
+        </div>
+
     {% endif %}
 {% endblock %}

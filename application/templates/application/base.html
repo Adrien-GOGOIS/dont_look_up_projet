@@ -2,14 +2,19 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Don't Look Up - {% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1 class="text-center">Don't Look Up !</h1>
-    <h3 class="text-center">L'application pour se faire peur</h3>
-    <div id="content">
+    <div class="d-flex justify-content-center">
+        <h1 class="text-center text-uppercase my-4 w-50 border rounded">Don't Look Up !</h1>
+    </div>
+    <div class="d-flex justify-content-center">
+        <h4 class="text-center mb-4">L'application pour se faire peur</h4>
+    </div>
+    <div id="content" class="mt-5">
         {% block content %}
         {% endblock %}
     </div>
