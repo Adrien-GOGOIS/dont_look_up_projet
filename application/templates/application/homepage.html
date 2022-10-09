@@ -10,4 +10,13 @@
             {{ form.as_p }}
             <input type="submit" value="Recherche">
         </form>
+        <div>
+            {% if asteroids %}
+                {% for asteroid in asteroids %}
+                    <p>Name : {{ asteroid.name }}</p>
+                {% endfor %}
+            {% else %}
+                <p>Request...</p>
+            {% endif %}
+        </div>
     {% endblock %}
