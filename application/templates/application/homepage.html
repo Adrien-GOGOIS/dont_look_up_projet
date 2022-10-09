@@ -19,7 +19,7 @@
                         <p class="card-text">Son diamètre : {{ asteroid.diameter }} km</p>
                         <p class="card-text">Distance avec votre tête : {{ asteroid.miss_distance }} km</p>
                         <p class="card-text">Date : {{ asteroid.close_approach_date }}</p>
-                        <a href="#" class="btn btn-warning">En savoir plus...vraiment?</a>
+                        <a href="{% url 'asteroid-details' asteroid.asteroid_id %}" class="btn btn-warning">En savoir plus...vraiment?</a>
                       </div>
                     </div>
                 {% endfor %}

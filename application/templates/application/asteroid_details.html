@@ -5,6 +5,10 @@
 {% endblock %}
 
 {% block content %}
-    <p>Details</p>
-    <p>Asteroid : {{ asteroid_id }}</p>
+    {% if asteroid %}
+        <p>Asteroid : {{ asteroid.name }}</p>
+            {% for date, distance in asteroid.latest_approach.items %}
+                <p>Passage le : {{ date }} à {{ distance }} km de votre tête</p>
+            {% endfor %}
+    {% endif %}
 {% endblock %}

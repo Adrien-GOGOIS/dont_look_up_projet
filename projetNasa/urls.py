@@ -20,7 +20,6 @@ from application import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('homepage/', views.homepage),
-    path('asteroids/', views.asteroids_list),
-    path('asteroids/<int:asteroid_id>/', views.asteroid_details),
+    path('', views.homepage),
+    path('asteroid/<int:asteroid_id>/', views.asteroid_details, name='asteroid-details'),
 ]

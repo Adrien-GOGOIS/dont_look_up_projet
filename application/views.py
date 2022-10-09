@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from application.form import DateForm
 from application.service import get_asteroids
+from application.service import get_asteroid_by_id
 
 
 def homepage(request):
@@ -23,16 +24,11 @@ def homepage(request):
     return render(request, 'application/homepage.html', context)
 
 
-def asteroids_list(request):
-    context = {
-    }
-
-    return render(request, 'application/asteroids_list.html', context)
-
-
 def asteroid_details(request, asteroid_id):
+    asteroid = get_asteroid_by_id(asteroid_id)
+
     context = {
-        'asteroid_id': asteroid_id,
+        'asteroid': asteroid,
     }
 
     return render(request, 'application/asteroid_details.html', context)
