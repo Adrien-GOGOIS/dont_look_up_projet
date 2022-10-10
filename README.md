@@ -12,11 +12,18 @@
 
 ```bash
 
+# Assurez-vous d'avoir Python3 et pip installés sur votre machine
+
 # Clonez ce repository
 $ git clone https://github.com/Adrien-GOGOIS/dont_look_up_projet.git
 
 # Rentrez dans le dossier contenant le dossier
 $ cd dont_look_up_projet
+
+# Installations des dépendances
+$ pip install Django
+$ pip install requests
+$ pip install django-dotenv
 
 # Générez votre clef API en vous inscrivant sur les services de la Nasa (voir lien plus bas)
 # Puis, à la racine du projet, créez un fichier 'config.env' et ajoutez cette ligne de code avec votre clef comme ceci :
