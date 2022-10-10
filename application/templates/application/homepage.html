@@ -8,6 +8,9 @@
         <div class="container">
             <div class="row">
                 <form method="post" class="center-block text-center">
+                    <div>
+                        <p>Entrez 2 dates pour savoir les astéroïds qui passeront au-dessus de votre tête dans l'intervalle</p>
+                    </div>
                     {% csrf_token %}
                     <div class="">
                         {{ form.as_p }}
@@ -23,11 +26,11 @@
                        <div class="col-md-4">
                            <div class="card my-2">
                               <div class="card-body">
-                                <h5 class="card-title">Nom : {{ asteroid.name }}</h5>
-                                <p class="card-text">Diamètre : {{ asteroid.diameter }} km</p>
-                                <p class="card-text">Distance avec votre tête : {{ asteroid.miss_distance }} km</p>
-                                <p class="card-text">Date : {{ asteroid.close_approach_date }}</p>
-                                <a href="{% url 'asteroid-details' asteroid.asteroid_id %}" class="btn btn-warning">En savoir plus...vraiment?</a>
+                                <h5 class="card-title mb-4">Nom : {{ asteroid.name }}</h5>
+                                <p class="card-text">Diamètre : <span class="border-dark border-bottom border-end pe-1">{{ asteroid.diameter }} km</span></p>
+                                <p class="card-text"><span class="border-dark border-top border-start ps-1">Distance avec votre tête</span> : {{ asteroid.miss_distance }} km</p>
+                                <p class="card-text">Date : <span class="border-dark border-top border-end pe-1">{{ asteroid.close_approach_date }}</span></p>
+                                <a href="{% url 'asteroid-details' asteroid.asteroid_id %}" class="btn btn-warning">En savoir plus...</a>
                               </div>
                            </div>
                        </div>

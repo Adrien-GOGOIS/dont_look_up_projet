@@ -2,7 +2,7 @@ import requests
 from datetime import date
 
 
-class Asteroid():
+class Asteroid:
 
     def __init__(self, asteroid_id, name, diameter, close_approach_date, miss_distance, latest_approach):
         self.asteroid_id = asteroid_id
@@ -11,6 +11,10 @@ class Asteroid():
         self.close_approach_date = close_approach_date
         self.miss_distance = miss_distance
         self.latest_approach = latest_approach
+
+    def __str__(self):
+        string = "Astéroïd : " + self.name + "\n" + "ID : " + self.asteroid_id
+        return string
 
 
 def get_asteroids(start_date, end_date):
