@@ -16,6 +16,18 @@
 
 # Clonez ce repository
 $ git clone https://github.com/Adrien-GOGOIS/dont_look_up_projet.git
+$ cd dont_look_up_project
+
+# Installation
+
+# Pour créer un virtual env et l'activer
+$ python3 -m venv ./venv
+$ source ./venv/bin/activate
+
+# Dépendances
+$ pip install django
+$ pip install django-dotenv
+$ pip install requests
 
 # Générez votre clef API en vous inscrivant sur les services de la Nasa (voir lien plus bas)
 # Puis, à la racine du projet, créez un fichier 'config.env' et ajoutez cette ligne de code avec votre clef comme ceci :
