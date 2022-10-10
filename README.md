@@ -19,10 +19,21 @@ $ git clone https://github.com/Adrien-GOGOIS/dont_look_up_projet.git
 $ cd dont_look_up_projet
 
 # Installation
-$ 
+$ pip install
+
+# Générez votre clef API en vous isncrivant sur les services de la Nasa (voir lien plus bas)
+# Puis, à la racine du projet, créez un fichier 'config.env' et ajoutez cette ligne de code avec votre clef comme ceci :
+$ NASA_API_KEY = "insérez votre clef ici"
+
+# L'application peut fonctionner de façon très limitée avec la clef API : DEMO_KEY
+$ NASA_API_KEY = "DEMO_KEY"
 
 # Lancez l'application
 $ python manage.py runserver
+
+# Ouvrez votre navigateur favoris et tapez dans la barre d'adresse : http://127.0.0.1:8000/
+
+# Enjoy !
 
 ```
 
