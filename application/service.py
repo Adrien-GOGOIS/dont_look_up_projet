@@ -1,5 +1,6 @@
 import requests
 from datetime import date
+from api_key import get_key
 
 
 class Asteroid:
@@ -18,11 +19,13 @@ class Asteroid:
 
 
 def get_asteroids(start_date, end_date):
+    api_key = get_key()
     url = 'https://api.nasa.gov/neo/rest/v1/feed?start_date=' \
           + str(start_date) \
           + '&end_date=' \
           + str(end_date) \
-          + '&api_key=vQWT6RYdaTlM3uhavzlzima97RJeaKZgSMMkqf6D'
+          + '&api_key=' \
+          + api_key
     response = requests.get(url)
     asteroids = response.json()
 
@@ -58,7 +61,7 @@ def get_asteroid_by_id(asteroid_id):
             asteroid_latest_approach.update({
                 approach['close_approach_date']
                 :
-                round(float(approach['miss_distance']['kilometers']))
+                    round(float(approach['miss_distance']['kilometers']))
             })
         if len(asteroid_latest_approach) == 5:
             break
