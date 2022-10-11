@@ -15,12 +15,20 @@
                     <div class="">
                         {{ form.as_p }}
                     </div>
-                    <input type="submit" value="Recherche" class="search-button btn btn-success">
+                    <input type="submit" value="Recherche" class="search-button btn btn-success" onclick="displaySpinner()">
                 </form>
             </div>
         </div>
-            {% if asteroids %}
-                <div class="container mt-5">
+            <div class="d-flex justify-content-center mt-5">
+               <div id="loader" style="display : none;">
+                    <div class="spinner-border text-dark" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+                <div class="container" id="search-results" onload="displaySpinner()">
+                    {% if asteroids %}
                    <div class="row text-center">
                        {% for asteroid in asteroids %}
                        <div class="col-md-4">
@@ -36,10 +44,6 @@
                        </div>
                        {% endfor %}
                    </div>
-                </div>
-            {% else %}
-                <div class="d-flex justify-content-center mt-5">
-                    <p>En attente ...</p>
                 </div>
             {% endif %}
     {% endblock %}

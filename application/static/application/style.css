@@ -3,11 +3,11 @@
 }
 
 .card {
-    transition: transform 2s;
+    transition: transform 1s;
 }
 
 .card:hover {
-    transform: scale(0.9);
+    transform: scale(1.1);
 }
 
 .search-button {

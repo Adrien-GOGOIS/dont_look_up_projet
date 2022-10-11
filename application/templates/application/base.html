@@ -20,5 +20,19 @@
         {% block content %}
         {% endblock %}
     </div>
+
+    <script>
+        let loader = true;
+
+        function displaySpinner() {
+            if (loader) {
+                document.getElementById("loader").style.display = "block";
+                document.getElementById("search-results").style.display = "none";
+            } else {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("search-results").style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>

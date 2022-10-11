@@ -6,7 +6,6 @@ from application.service import get_asteroid_by_id
 
 def homepage(request):
     asteroids = []
-    is_loading = False
 
     if request.method == 'POST':
         form = DateForm(request.POST)
@@ -15,12 +14,10 @@ def homepage(request):
             start_date = form.cleaned_data['start_date']
             end_date = form.cleaned_data['end_date']
             asteroids = get_asteroids(start_date, end_date)
-            is_loading = False
     else:
         form = DateForm()
 
     context = {
-        'is_loading': is_loading,
         'form': form,
         'asteroids': asteroids
     }
