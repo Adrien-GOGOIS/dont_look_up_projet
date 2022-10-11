@@ -1,3 +1,4 @@
+import datetime
 import requests
 from datetime import date
 from api_key import get_key
@@ -19,6 +20,12 @@ class Asteroid:
 
 
 def get_asteroids(start_date, end_date):
+
+    asteroids_list = []
+
+    if end_date - start_date > datetime.timedelta(days=7):
+        return None
+
     api_key = get_key()
     url = 'https://api.nasa.gov/neo/rest/v1/feed?start_date=' \
           + str(start_date) \
@@ -28,8 +35,6 @@ def get_asteroids(start_date, end_date):
           + api_key
     response = requests.get(url)
     asteroids = response.json()
-
-    asteroids_list = []
 
     for date, asteroid in asteroids['near_earth_objects'].items():
         asteroid_id = asteroid[0]['id']

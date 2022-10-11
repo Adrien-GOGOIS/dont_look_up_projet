@@ -9,7 +9,7 @@
             <div class="row">
                 <form method="post" class="center-block text-center">
                     <div>
-                        <p>Entrez 2 dates pour savoir les astéroïds qui passeront au-dessus de votre tête dans l'intervalle</p>
+                        <p>Entrez 2 dates pour savoir les astéroïds qui passeront au-dessus de votre tête dans l'intervalle (7 jours maximum)</p>
                     </div>
                     {% csrf_token %}
                     <div class="">
@@ -19,14 +19,23 @@
                 </form>
             </div>
         </div>
-            <div class="d-flex justify-content-center mt-5">
+            {% load i18n %}
+            {% load l10n %}
+            {% language 'fr' %}
+            <div class="d-flex justify-content-center my-4">
                <div id="loader" style="display : none;">
                     <div class="spinner-border text-dark" role="status">
                       <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
             </div>
-
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="d-flex justify-content-center">
+                            <p class="alert alert-danger">{{message}}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
                 <div class="container" id="search-results" onload="displaySpinner()">
                     {% if asteroids %}
                    <div class="row text-center">
@@ -44,6 +53,10 @@
                        </div>
                        {% endfor %}
                    </div>
+                    {% else %}
+                    <p>test</p>
+                    {% endif %}
                 </div>
-            {% endif %}
+                {% endif %}
+        {% endlanguage %}
     {% endblock %}

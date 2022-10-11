@@ -7,6 +7,6 @@ class DateInput(forms.DateInput):
 
 
 class DateForm(forms.Form):
-    start_date = forms.DateField(initial=datetime.date.today, widget=DateInput)
-    end_date = forms.DateField(initial=datetime.date.today, widget=DateInput)
 
+    start_date = forms.DateField(initial=datetime.date.today, widget=DateInput, label="A partir du ")
+    end_date = forms.DateField(initial=datetime.date.today, widget=DateInput, label="Jusqu'au ")

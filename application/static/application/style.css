@@ -2,11 +2,11 @@
     background-color: rgba(253, 233, 224, 0.1);
 }
 
-.card {
+.card-scale {
     transition: transform 1s;
 }
 
-.card:hover {
+.card-scale:hover {
     transform: scale(1.1);
 }
 
