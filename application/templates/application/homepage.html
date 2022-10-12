@@ -9,7 +9,7 @@
             <div class="row">
                 <form method="post" class="center-block text-center">
                     <div>
-                        <p>Entrez 2 dates pour savoir les astéroïds qui passeront au-dessus de votre tête dans l'intervalle (7 jours maximum)</p>
+                        <p class="fst-italic fw-lighter">Entrez 2 dates pour savoir les astéroïds qui passeront au-dessus de votre tête dans l'intervalle (7 jours maximum)</p>
                     </div>
                     {% csrf_token %}
                     <div class="">
@@ -41,7 +41,7 @@
                    <div class="row text-center">
                        {% for asteroid in asteroids %}
                        <div class="col-md-4">
-                           <div class="card my-2">
+                           <div class="card-scale card my-2">
                               <div class="card-body">
                                 <h5 class="card-title mb-4">Nom : {{ asteroid.name }}</h5>
                                 <p class="card-text">Diamètre : <span class="border-dark border-bottom border-end pe-1">{{ asteroid.diameter }} km</span></p>
