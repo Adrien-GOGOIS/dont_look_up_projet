@@ -9,12 +9,12 @@
         <div class="d-flex justify-content-center">
             <div class="card" style="width: 40vw;">
               <div class="card-header">
-                  Les 5 derniers passages de l'astéroïd <span class="font-weight-bold" style="color: rgba(48, 109, 165, 0.8)">{{ asteroid.name }}</span>
+                  Les 5 derniers passages de l'astéroïd <span class="font-weight-bold" style="color: rgba(48, 109, 165, 0.8)">{{ asteroid.0.asteroid.name }}</span>
               </div>
               <ul class="list-group list-group-flush">
-                  {% for date, distance in asteroid.latest_approach.items %}
+                  {% for approach in asteroid %}
                   <li class="list-group-item">
-                      Le <span>{{ date }}</span> à <span>{{ distance }}</span> km de votre tête
+                      Le <span>{{ approach.date }}</span> à <span>{{ approach.distance }}</span> km de votre tête
                   </li>
                   {% endfor %}
               </ul>

@@ -2,21 +2,7 @@ import datetime
 import requests
 from datetime import date
 from api_key import get_key
-
-
-class Asteroid:
-
-    def __init__(self, asteroid_id, name, diameter, close_approach_date, miss_distance, latest_approach):
-        self.asteroid_id = asteroid_id
-        self.name = name
-        self.diameter = diameter
-        self.close_approach_date = close_approach_date
-        self.miss_distance = miss_distance
-        self.latest_approach = latest_approach
-
-    def __str__(self):
-        string = "Astéroïd : " + self.name + "\n" + "ID : " + self.asteroid_id
-        return string
+from application.models import Asteroid, LatestApproach
 
 
 def get_asteroids(start_date, end_date):
@@ -37,14 +23,14 @@ def get_asteroids(start_date, end_date):
     asteroids = response.json()
 
     for date, asteroid in asteroids['near_earth_objects'].items():
+
         asteroid_id = asteroid[0]['id']
         name = asteroid[0]['name']
         diameter = round(asteroid[0]['estimated_diameter']['meters']['estimated_diameter_max'])
         close_approach_date = asteroid[0]['close_approach_data'][0]['close_approach_date']
         miss_distance = round(float(asteroid[0]['close_approach_data'][0]['miss_distance']['kilometers']))
-        latest_approach = {}
 
-        asteroid = Asteroid(asteroid_id, name, diameter, close_approach_date, miss_distance, latest_approach)
+        asteroid = Asteroid(asteroid_id=asteroid_id, name=name, diameter=diameter, close_approach_date=close_approach_date, miss_distance=miss_distance)
         asteroids_list.append(asteroid)
 
     return asteroids_list
@@ -57,26 +43,17 @@ def get_asteroid_by_id(asteroid_id):
     response = requests.get(url)
     asteroid = response.json()
 
+    actual_asteroid = Asteroid(asteroid_id=asteroid['id'], name=asteroid['name'])
     asteroid_approach = asteroid['close_approach_data']
 
-    asteroid_latest_approach = {}
+    approaches_array = []
+    count = 0
 
     for approach in reversed(asteroid_approach):
-        if approach['close_approach_date'] < str(date.today()):
-            asteroid_latest_approach.update({
-                approach['close_approach_date']
-                :
-                    round(float(approach['miss_distance']['kilometers']))
-            })
-        if len(asteroid_latest_approach) == 5:
-            break
+        if count < 5:
+            if approach['close_approach_date'] < str(date.today()):
+                asteroid_latest_approach = LatestApproach(date=approach['close_approach_date'], distance=round(float(approach['miss_distance']['kilometers'])), asteroid=actual_asteroid)
+                approaches_array.append(asteroid_latest_approach)
+                count += 1
 
-    asteroid_id = asteroid['id']
-    name = asteroid['name']
-    diameter = 0
-    close_approach_date = ''
-    miss_distance = ''
-
-    asteroid = Asteroid(asteroid_id, name, diameter, close_approach_date, miss_distance, asteroid_latest_approach)
-
-    return asteroid
+    return approaches_array
