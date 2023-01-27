@@ -1,2 +1,6 @@
 config.env
 application/__pycache__/
+venv
+.venv
+
+

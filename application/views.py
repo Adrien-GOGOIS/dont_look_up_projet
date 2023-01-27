@@ -17,7 +17,15 @@ def homepage(request):
             asteroids = get_asteroids(start_date, end_date)
 
             if not asteroids:
-                messages.error(request, "L'intervalle entre 2 dates ne doit pas être supérieur à 7 jours")
+                messages.error(
+                    request, "L'intervalle entre 2 dates ne doit pas être supérieur à 7 jours. \n "
+                             "Le but de cette application n'étant pas de vous donner le temps de fuir."
+                )
+
+            if start_date > end_date:
+                messages.error(request, "Sur Terre, la fin se déroule après le début...")
+
+
 
     else:
         form = DateForm()
