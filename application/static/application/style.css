@@ -32,8 +32,9 @@ h4 {
 
 .view-details-button {
     transition: box-shadow 2s;
+	background-color: rgba(255, 10, 10, 0.6) !important;
 }
 
 .view-details-button:hover {
-    box-shadow: 1px 1px 10px 1px rgba(220, 175, 68, 1);
+	box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 1);
 }
