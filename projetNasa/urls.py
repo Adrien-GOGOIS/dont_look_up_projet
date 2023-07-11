@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.homepage, name='homepage'),
     path('asteroid/<int:asteroid_id>/', views.asteroid_details, name='asteroid-details'),
+    path('asteroid/image_of_the_day', views.image_of_the_day, name='image_of_the_day'),
 ]

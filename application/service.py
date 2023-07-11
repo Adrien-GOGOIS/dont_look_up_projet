@@ -2,7 +2,7 @@ import datetime
 import requests
 from datetime import date
 from api_key import get_key
-from application.models import Asteroid, LatestApproach
+from application.models import Asteroid, LatestApproach, ImageOfTheDay
 
 api_key = get_key()
 
@@ -69,3 +69,23 @@ def get_asteroid_by_id(asteroid_id):
                 count += 1
 
     return approaches_array
+
+
+def get_image_of_the_day(date):
+    url = 'https://api.nasa.gov/planetary/apod?' \
+        + 'date=' \
+        + str(date) \
+        + '&api_key=' \
+        + api_key
+    response = requests.get(url)
+    image_of_the_day = response.json()
+
+    image = ImageOfTheDay(
+        date=image_of_the_day['date'],
+        explanation=image_of_the_day['explanation'],
+        hdurl=image_of_the_day['hdurl'],
+        title=image_of_the_day['title'],
+        url=image_of_the_day['url'],
+    )
+
+    return image

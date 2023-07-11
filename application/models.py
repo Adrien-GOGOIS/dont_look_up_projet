@@ -17,3 +17,11 @@ class LatestApproach(models.Model):
     asteroid = models.ForeignKey(Asteroid, db_index=True, on_delete=models.CASCADE)
     date = models.CharField(max_length=10, db_index=True)
     distance = models.CharField(max_length=10, db_index=True)
+
+
+class ImageOfTheDay(models.Model):
+    date = models.CharField(max_length=10, db_index=True)
+    explanation = models.CharField(max_length=10000, db_index=True)
+    hdurl = models.CharField(max_length=100, db_index=True)
+    title = models.CharField(max_length=50, db_index=True)
+    url = models.CharField(max_length=100, db_index=True)

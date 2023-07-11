@@ -12,7 +12,7 @@
                         <p class="fst-italic fw-lighter">Entrez 2 dates pour savoir les astéroïds qui passeront au-dessus de votre tête dans l'intervalle (7 jours maximum)</p>
                     </div>
                     {% csrf_token %}
-                    <div class="">
+                    <div>
                         {{ form.as_p }}
                     </div>
                     <input type="submit" value="Recherche" class="search-button btn btn-success" onclick="displaySpinner()">
@@ -56,5 +56,8 @@
                     {% endif %}
                 </div>
                 {% endif %}
+                <div>
+                    <a href="{% url 'image_of_the_day' %}" class="view-details-button btn btn-sm">En savoir plus...</a>
+                </div>
         {% endlanguage %}
     {% endblock %}

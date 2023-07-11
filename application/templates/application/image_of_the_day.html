@@ -1,0 +1,39 @@
+{% extends 'application/base.html' %}
+
+{% block title %}
+    {{ block.super }} - Details
+{% endblock %}
+
+{% block content %}
+<body>
+    <div class="container">
+        <div class="row">
+            <form method="post" class="center-block text-center">
+                <div>
+                    <p class="fst-italic fw-lighter">Entrez 1 dates pour voir l'image du jour de la Nasa</p>
+                </div>
+                {% csrf_token %}
+                <div>
+                    {{ form.as_p }}
+                </div>
+                <input type="submit" value="Recherche" class="search-button btn btn-success" onclick="displaySpinner()">
+            </form>
+        </div>
+    </div>
+    <div>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="d-flex justify-content-center">
+                    <p class="alert alert-danger">{{message}}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+        <div>
+            <h2>{{ image.title }}</h2>
+            <p>{{ image.explanation }}</p>
+            <img src={{ image.url }}>
+        </div>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}
