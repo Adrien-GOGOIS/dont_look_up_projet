@@ -9,7 +9,9 @@
             <div class="row">
                 <form method="post" class="center-block text-center">
                     <div>
-                        <p class="fst-italic fw-lighter">Entrez 2 dates pour savoir les astéroïds qui passeront au-dessus de votre tête dans l'intervalle (7 jours maximum)</p>
+                        <p class="fst-italic fw-lighter">
+							Entrez 2 dates pour savoir les astéroïds qui passeront au-dessus de votre tête dans l'intervalle (7 jours maximum)
+						</p>
                     </div>
                     {% csrf_token %}
                     <div>
@@ -56,8 +58,8 @@
                     {% endif %}
                 </div>
                 {% endif %}
-                <div>
-                    <a href="{% url 'image_of_the_day' %}" class="view-details-button btn btn-sm">En savoir plus...</a>
+                <div class="d-flex justify-content-center">
+                    <a href="{% url 'image_of_the_day' %}" class='text-decoration-none text-dark text-center mt-4 mb-2 border border-dark rounded p-2'>Je suis un esthète, la peur c'est pas mon truc...</a>
                 </div>
         {% endlanguage %}
     {% endblock %}

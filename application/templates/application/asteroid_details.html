@@ -9,7 +9,8 @@
         <div class="d-flex justify-content-center">
             <div class="card" style="width: 40vw;">
               <div class="card-header">
-                  Les 5 derniers passages de l'astéroïd <span class="font-weight-bold" style="color: rgba(48, 109, 165, 0.8)">{{ asteroid.0.asteroid.name }}</span>
+                  Les 5 derniers passages de l'astéroïd 
+				  <span class="font-weight-bold" style="color: rgba(48, 109, 165, 0.8)">{{ asteroid.0.asteroid.name }}</span>
               </div>
               <ul class="list-group list-group-flush">
                   {% for approach in asteroid %}
@@ -23,6 +24,5 @@
         <div class="d-flex justify-content-center">
             <input type=button value="Retour aux résultats" onClick="javascript:history.go(-1);" class="btn mt-5 view-details-button">
         </div>
-
     {% endif %}
 {% endblock %}

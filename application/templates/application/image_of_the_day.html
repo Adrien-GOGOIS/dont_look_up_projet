@@ -1,7 +1,7 @@
 {% extends 'application/base.html' %}
 
 {% block title %}
-    {{ block.super }} - Details
+    {{ block.super }} - Image du jour
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,7 @@
         <div class="row">
             <form method="post" class="center-block text-center">
                 <div>
-                    <p class="fst-italic fw-lighter">Entrez 1 dates pour voir l'image du jour de la Nasa</p>
+                    <p class="fst-italic fw-lighter">Entrez une pour voir l'image du jour correspondant en direct depuis Houston, Texas</p>
                 </div>
                 {% csrf_token %}
                 <div>
@@ -28,10 +28,12 @@
                 </div>
             {% endfor %}
         {% else %}
-        <div>
+        <div class="d-flex justify-content-center flex-column">
             <h2>{{ image.title }}</h2>
-            <p>{{ image.explanation }}</p>
-            <img src={{ image.url }}>
+			<div class='d-flex'>
+				<img src={{ image.url }} class="img-rounded img-fluid w-50 h-50">
+				<p class='w-1/3'>{{ image.explanation }}</p>
+			</div>
         </div>
         {% endif %}
     </div>
