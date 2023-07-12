@@ -1,7 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
 class Asteroid(models.Model):
     asteroid_id = models.CharField(max_length=10, default="0")
     name = models.CharField(max_length=50, default="No name")
