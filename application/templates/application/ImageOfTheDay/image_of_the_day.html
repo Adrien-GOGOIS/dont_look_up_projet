@@ -1,0 +1,33 @@
+{% extends 'application/main.html' %}
+
+{% block title %}
+    {{ block.super }} - Image du jour
+{% endblock %}
+
+{% block content %}
+<body>
+    {% include "./searchImageForm.html" %}
+	{% include "application/components/loader.html" %}
+	{% if messages %}
+		{% for message in messages %}
+			<div class="d-flex justify-content-center">
+				<p class="alert alert-danger">{{message}}</p>
+			</div>
+		{% endfor %}
+	{% endif %}
+	{% if image %}
+		<div class="d-flex justify-content-center flex-column mt-6">
+			<h2 class='text-center my-5'>{{ image.title }}</h2>
+			<p style='display : block;' id='originalText' class='w-50 mx-auto'>
+				{{ image.explanation }}
+				<button class='btn btn-sm btn-link' onClick={TranslationService.displayTranslation()}>Traduire</button>
+			</p>
+			<p style='display : none;' id='translatedText' class='w-50 mx-auto'>
+				{{ translation }} <small class="fst-italic fw-lighter">(Google traduction)</small>
+				<button class='btn btn-sm btn-link' onClick={TranslationService.displayTranslation()()}>Revenir à l'original</button>
+			</p>
+			<img src={{ image.url }} class="img-rounded img-fluid w-50 h-50 mx-auto mt-3">
+		</div>
+	{% endif %}
+{% endblock %}
+</body>

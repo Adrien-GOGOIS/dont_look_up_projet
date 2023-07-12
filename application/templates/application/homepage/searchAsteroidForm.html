@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <form method="post" class="center-block text-center">
+            <div>
+                <p class="fst-italic fw-lighter">
+                    Entrez 2 dates pour savoir les astéroïds qui passeront au-dessus de votre tête dans l'intervalle (7 jours maximum)
+                </p>
+            </div>
+            {% csrf_token %}
+            <div>
+                {{ form.as_p }}
+            </div>
+            <input type="submit" value="Recherche" class="search-button btn btn-success" onclick="displaySpinner()">
+        </form>
+    </div>
+</div>

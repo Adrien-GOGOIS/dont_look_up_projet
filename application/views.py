@@ -4,6 +4,7 @@ from application.service import get_asteroids, get_image_of_the_day, get_transla
 from application.service import get_asteroid_by_id
 from django.contrib import messages
 
+
 def homepage(request):
     asteroids = []
     if request.method == 'POST':
@@ -29,7 +30,7 @@ def homepage(request):
         'asteroids': asteroids,
     }
 
-    return render(request, 'application/homepage.html', context)
+    return render(request, 'application/homepage/homepage.html', context)
 
 
 def asteroid_details(request, asteroid_id):
@@ -39,7 +40,7 @@ def asteroid_details(request, asteroid_id):
         'asteroid': asteroid,
     }
 
-    return render(request, 'application/asteroid_details.html', context)
+    return render(request, 'application/asteroidDetails/asteroid_details.html', context)
 
 
 def image_of_the_day(request):
@@ -65,4 +66,8 @@ def image_of_the_day(request):
         'translation': translation
     }
 
-    return render(request, 'application/image_of_the_day.html', context)
+    return render(request, 'application/ImageOfTheDay/image_of_the_day.html', context)
+
+
+def app_title(request):
+    return render(request, 'application/app_title.html')
