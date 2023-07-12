@@ -1,11 +1,11 @@
 .body {
-    background-image: url("./img/sky.jpg");
+    background-image: url("./img/stars.jpg");
     background-position: right 25% bottom 35%;
     background-attachment: fixed;
 }
 
 .mainTitle {
-    background-color: rgba(255, 10, 10, 0.6);
+    background-color: rgba(255, 10, 10, 0.8);
     box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 1);
 }
 
@@ -19,7 +19,9 @@ h4 {
 
 .card-scale:hover {
     transform: scale(1.1);
-    background-color: rgba(10, 10, 150, 0.3);
+    background-color: rgba(0, 0, 0, 0.1);
+	border: solid white 1px;
+	color: white;
 }
 
 .search-button {
@@ -32,11 +34,11 @@ h4 {
 
 .view-details-button {
     transition: box-shadow 2s;
-	background-color: rgba(255, 10, 10, 0.6) !important;
+	background-color: rgba(255, 10, 10, 0.8) !important;
 }
 
 .view-details-button:hover {
-	box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 1);
+	box-shadow: 1px 1px 15px 1px rgba(255, 10, 10, 0.8) !important;
 }
 
 .image-of-day-link:hover {

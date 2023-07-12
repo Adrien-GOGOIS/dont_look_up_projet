@@ -1,39 +1,27 @@
 {% extends 'application/main.html' %}
 
-    {% block title %}
-        {{ block.super }} - Homepage
-    {% endblock %}
+{% block title %}
+	{{ block.super }} - Homepage
+{% endblock %}
 
-    {% block content %}
-        {% include "./searchAsteroidForm.html" %}
-        {% include "application/components/loader.html" %}
+{% block content %}
+	{% include "./search_asteroid_form.html" %}
+	{% include "application/components/loader.html" %}
 
-        {% if messages %}
-            {% for message in messages %}
-                <div class="d-flex justify-content-center">
-                    <p class="alert alert-danger">{{message}}</p>
-                </div>
-            {% endfor %}
-        {% else %}
-        <div class="container" id="search-results" onload="displaySpinner()">
-            {% if asteroids %}
-           <div class="row text-center">
-               {% for asteroid in asteroids %}
-               <div class="col-md-4">
-                   <div class="card-scale card my-2">
-                      <div class="card-body">
-                        <h5 class="card-title mb-4">Nom : {{ asteroid.name }}</h5>
-                        <p class="card-text">Diamètre : <span class="border-dark border-bottom border-end pe-1">{{ asteroid.diameter }} km</span></p>
-                        <p class="card-text"><span class="border-dark border-top border-start ps-1">Distance avec votre tête</span> : {{ asteroid.miss_distance }} km</p>
-                        <p class="card-text">Date : <span class="border-dark border-top border-end pe-1">{{ asteroid.close_approach_date }}</span></p>
-                        <a href="{% url 'asteroid-details' asteroid.asteroid_id %}" class="view-details-button btn btn-sm">En savoir plus...</a>
-                      </div>
-                   </div>
-               </div>
-               {% endfor %}
-           </div>
-            {% endif %}
-        </div>
-        {% endif %}
-        {% include 'application/components/searchImageLink.html' %}
-    {% endblock %}
+	{% if messages %}
+		{% for message in messages %}
+			{% include 'application/components/alert_message.html' %}
+		{% endfor %}
+	{% else %}
+	<div class="container" id="search-results" onload="displaySpinner()">
+		{% if asteroids %}
+		<div class="row text-center">
+			{% for asteroid in asteroids %}
+				{% include './asteroid_card.html'%}
+			{% endfor %}
+		</div>
+		{% endif %}
+	</div>
+	{% endif %}
+	{% include 'application/components/search_image_link.html' %}
+{% endblock %}

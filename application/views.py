@@ -1,3 +1,4 @@
+from datetime import date
 from django.shortcuts import render
 from application.form import DateForm, ImageForm
 from application.service import get_asteroids, get_image_of_the_day, get_translation
@@ -50,13 +51,19 @@ def image_of_the_day(request):
         form = ImageForm(request.POST)
         if form.is_valid():
             date = form.cleaned_data['date']
-            image = get_image_of_the_day(date)
-            if image:
-                translation = get_translation(image.explanation)
-            else:
+
+            if date > date.today():
                 messages.error(
-                    request, "Pas d'image"
-                )	
+                    request, "Ne pas choisir de date future"
+                )
+            else:
+                image = get_image_of_the_day(date)
+                if image:
+                    translation = get_translation(image.explanation)
+                else:
+                    messages.error(
+                        request, "Pas d'image"
+                    )	
     else:
         form = ImageForm()
 
