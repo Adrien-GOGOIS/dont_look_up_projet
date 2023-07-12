@@ -4,7 +4,7 @@
     background-attachment: fixed;
 }
 
-h1 {
+.mainTitle {
     background-color: rgba(255, 10, 10, 0.6);
     box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 1);
 }
@@ -37,4 +37,8 @@ h4 {
 
 .view-details-button:hover {
 	box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 1);
+}
+
+.image-of-day-link:hover {
+	text-decoration: underline;
 }

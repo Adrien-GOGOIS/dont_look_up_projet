@@ -3,6 +3,7 @@ import requests
 from datetime import date
 from api_key import get_key
 from application.models import Asteroid, LatestApproach, ImageOfTheDay
+import translators as ts
 
 api_key = get_key()
 
@@ -71,7 +72,7 @@ def get_asteroid_by_id(asteroid_id):
     return approaches_array
 
 
-def get_image_of_the_day(date):
+def get_image_of_the_day(date: datetime) -> ImageOfTheDay:
     url = 'https://api.nasa.gov/planetary/apod?' \
         + 'date=' \
         + str(date) \
@@ -89,3 +90,7 @@ def get_image_of_the_day(date):
     )
 
     return image
+
+
+def get_translation(text):
+    return ts.translate_text(text, translator='google', from_language='en', to_language='fr')

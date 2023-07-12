@@ -10,7 +10,7 @@
         <div class="row">
             <form method="post" class="center-block text-center">
                 <div>
-                    <p class="fst-italic fw-lighter">Entrez une pour voir l'image du jour correspondant en direct depuis Houston, Texas</p>
+                    <p class="fst-italic fw-lighter">Entrez une date pour découvrir une image.</p>
                 </div>
                 {% csrf_token %}
                 <div>
@@ -20,22 +20,48 @@
             </form>
         </div>
     </div>
-    <div>
-        {% if messages %}
-            {% for message in messages %}
-                <div class="d-flex justify-content-center">
-                    <p class="alert alert-danger">{{message}}</p>
-                </div>
-            {% endfor %}
-        {% else %}
-        <div class="d-flex justify-content-center flex-column">
-            <h2>{{ image.title }}</h2>
-			<div class='d-flex'>
-				<img src={{ image.url }} class="img-rounded img-fluid w-50 h-50">
-				<p class='w-1/3'>{{ image.explanation }}</p>
+	<div class="d-flex justify-content-center my-4">
+		<div id="loader" style="display : none;">
+			 <div class="spinner-border text-dark" role="status">
+			   <span class="visually-hidden">Loading...</span>
+			 </div>
+		 </div>
+	 </div>
+	<div>
+		{% if messages %}
+			{% for message in messages %}
+				<div class="d-flex justify-content-center">
+					<p class="alert alert-danger">{{message}}</p>
+				</div>
+			{% endfor %}
+		{% endif %}
+		{% if image %}
+			<div class="d-flex justify-content-center flex-column mt-6">
+				<h2 class='text-center my-5'>{{ image.title }}</h2>
+				<p style='display : block;' id='originalText' class='w-50 mx-auto'>
+					{{ image.explanation }} 
+					<button class='btn btn-sm btn-link' onClick={displayTranslation()}>Traduire</button>
+				</p>
+				<p style='display : none;' id='translatedText' class='w-50 mx-auto'>
+					{{ translation }} <small class="fst-italic fw-lighter">(Google traduction)</small>
+					<button class='btn btn-sm btn-link' onClick={displayTranslation()}>Revenir à l'original</button>
+				</p>
+				<img src={{ image.url }} class="img-rounded img-fluid w-50 h-50 mx-auto mt-3">
 			</div>
-        </div>
-        {% endif %}
+		{% endif %}
     </div>
+	<script>
+        let isTranslate = false;
+        function displayTranslation() {
+			isTranslate = !isTranslate;
+            if (isTranslate) {
+                document.getElementById("translatedText").style.display = "block";
+                document.getElementById("originalText").style.display = "none";
+            } else {
+				document.getElementById("translatedText").style.display = "none";
+                document.getElementById("originalText").style.display = "block";
+			}
+        }
+    </script>
 </body>
 {% endblock %}

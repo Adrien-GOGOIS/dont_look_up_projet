@@ -12,4 +12,4 @@ class DateForm(forms.Form):
 
 
 class ImageForm(forms.Form):
-    date = forms.DateField(initial=datetime.date.today, widget=DateInput, label="Date ")
+    date = forms.DateField(initial=datetime.date.today, widget=DateInput, label="Découvrir l'image du jour du ")

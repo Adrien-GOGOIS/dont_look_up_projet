@@ -59,7 +59,10 @@
                 </div>
                 {% endif %}
                 <div class="d-flex justify-content-center">
-                    <a href="{% url 'image_of_the_day' %}" class='text-decoration-none text-dark text-center mt-4 mb-2 border border-dark rounded p-2'>Je suis un esthète, la peur c'est pas mon truc...</a>
+                    <a 
+						href="{% url 'image_of_the_day' %}" 
+						class='image-of-day-link text-decoration-none text-dark text-center mt-4 mb-2'
+					>Je suis un esthète, la peur c'est pas mon truc --> </a>
                 </div>
         {% endlanguage %}
     {% endblock %}
