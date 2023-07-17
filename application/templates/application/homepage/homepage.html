@@ -5,25 +5,23 @@
 {% endblock %}
 
 {% block content %}
-	{% include "./searchAsteroidForm.html" %}
+	{% include "./search_asteroid_form.html" %}
 	{% include "application/components/loader.html" %}
 
 	{% if messages %}
 		{% for message in messages %}
-			<div class="d-flex justify-content-center">
-				<p class="alert alert-danger">{{message}}</p>
-			</div>
+			{% include 'application/components/alert_message.html' %}
 		{% endfor %}
 	{% else %}
 	<div class="container" id="search-results" onload="displaySpinner()">
 		{% if asteroids %}
 		<div class="row text-center">
 			{% for asteroid in asteroids %}
-				{% include './asteroidCard.html'%}
+				{% include './asteroid_card.html'%}
 			{% endfor %}
 		</div>
 		{% endif %}
 	</div>
 	{% endif %}
-	{% include 'application/components/searchImageLink.html' %}
+	{% include 'application/components/search_image_link.html' %}
 {% endblock %}
